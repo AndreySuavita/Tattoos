@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tattoo Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: 'Black Ops One', cursive;
+        }
+        button {
+            font-family: 'Black Ops One', cursive;
+        }
+    </style>
+</head>
+<body class="bg-fixed bg-cover bg-center text-white" style="background-image: url('/media/Fondo/f6409a76a93eb0caf357939d5ae61e83.jpg');">
+    <div class="container mx-auto px-4">
+        <!-- Encabezado con logo y título -->
+        <div class="d-flex align-items-center py-4">
+            <img src="{% static 'home/images/logo/alien_1.png' %}" alt="Logo" 
+                 class="img-fluid me-3 rounded-circle border border-white" 
+                 style="height: 70px; width: 70px; object-fit: cover;">
+            <h1 class="display-5 fw-bold">Tatuajes de {{ artist.name }}</h1>
+        </div>
+        
+
+        <!-- Contenedor para imágenes de tatuajes -->
+        <div class="flex flex-wrap gap-4 justify-center">
+            {% for tattoo in tattoos %}
+            <a href="#" class="group relative block overflow-hidden">
+                <!-- Like button -->
+                <button
+                    class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                >
+                    <span class="sr-only">Wishlist</span>
+    
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-4"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                        />
+                    </svg>
+                </button>
+    
+                <img
+                    src="{{ tattoo.image.url }}"
+                    alt="{{ tattoo.title }}"
+                    class="h-100 w-60 object-cover rounded-lg border-1 border-white shadow-lg transition duration-500 group-hover:scale-105 sm:h-72"
+                />
+
+            </a>
+            {% endfor %}
+        </div>
+    
+        <!-- Información del artista -->
+        <div class="flex flex-row-reverse items-end gap-4 mt-8">
+            <img
+                src="{{ artist.photo.url }}"
+                alt="{{ artist.photo.url }}"
+                class="size-60 rounded-lg object-cover"
+            />
+        
+            <div class="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 rounded-lg shadow-lg text-white">
+                <h3 class="text-2xl font-bold mb-2">{{ artist.name }}</h3>
+                <p class="text-base leading-relaxed">{{ artist.bio }}</p>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
