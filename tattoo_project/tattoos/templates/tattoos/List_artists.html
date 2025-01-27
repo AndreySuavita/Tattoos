@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Artist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: 'Black Ops One', cursive;
+        }
+        button {
+            font-family: 'Black Ops One', cursive;
+        }
+    </style>
+</head>
+<body class="bg-fixed bg-cover bg-center text-white" style="background-image: url('{{ background_image.image.url }}');">
+    <div class="container mx-auto px-4">
+        <!-- Encabezado con logo y título -->
+        <div class="d-flex align-items-center py-4">
+            <img src="{% static 'home/images/logo/alien_1.png' %}" alt="Logo" 
+                 class="img-fluid me-3 rounded-circle border border-white" 
+                 style="height: 70px; width: 70px; object-fit: cover;">
+            <h1 class="display-5 fw-bold">Nuestros Artistas </h1>
+        </div>
+        
+
+        <!-- Contenedor para imágenes de Artistas  -->
+        <div class="flex flex-wrap gap-4 justify-center">
+            {% for artist in artists %}
+            <a href="#" class="group relative block overflow-hidden">
+    
+                <img
+                    src="{{ artist.photo.url }}"
+                    alt="{{ artist.name }}"
+                    class="h-100 w-60 object-cover rounded-lg border-1 border-white shadow-lg transition duration-500 group-hover:scale-105 sm:h-72"
+                />
+
+            </a>
+            {% endfor %}
+        </div>
+    
+    </div>
+</body>
+</html>

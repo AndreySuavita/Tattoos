@@ -3,7 +3,7 @@ from .models import Tattoo, TattooArtist
 
 class TattooAdmin(admin.ModelAdmin):
     model = Tattoo
-    list_display = ['title', 'image']
+    list_display = ['artist','title', 'image']
 
 class TattooArtistAdmin(admin.ModelAdmin):
     model = TattooArtist
