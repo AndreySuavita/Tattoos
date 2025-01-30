@@ -29,7 +29,7 @@
         
 
         <!-- Contenedor para imágenes de Artistas  -->
-        <div class="flex flex-wrap gap-4 justify-center">
+        <!-- <div class="flex flex-wrap gap-4 justify-center">
             {% for artist in artists %}
             <a href="#" class="group relative block overflow-hidden">
     
@@ -41,7 +41,24 @@
 
             </a>
             {% endfor %}
+        </div> -->
+        <!-- Contenedor para imágenes de Artistas  -->
+
+         <div class="flex flex-wrap gap-8 justify-center">
+            {% for artist in artists %}
+            <a href="{% url 'artist_gallery' artist.id %}" class="group relative block overflow-hidden flex flex-col items-center text-center">
+                <img
+                    src="{{ artist.photo.url }}"
+                    alt="{{ artist.name }}"
+                    class="h-64 w-64 object-cover rounded-full border-4 border-white shadow-lg transition duration-500 group-hover:scale-105 sm:h-72 sm:w-72"
+                />
+                <h1 class="mt-4 text-lg font-semibold text-gray-800 sm:text-xl">{{ artist.name }}</h1>
+            </a>
+            {% endfor %}
         </div>
+        
+        
+
     
     </div>
 </body>

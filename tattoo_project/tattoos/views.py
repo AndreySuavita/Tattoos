@@ -16,7 +16,7 @@ from .models import Tattoo, TattooArtist
 from home.models import Background
 
 class GalleryView(TemplateView):
-    template_name = 'tattoos/gallery_artist.html'
+    template_name = 'tattoos/Gallery_artist.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -37,8 +37,10 @@ class ListArtist(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # poner artista
         context['artists'] = TattooArtist.objects.all()
-
         # poner fondos
         context['background_image'] = Background.objects.filter(is_background=True).first()
+
+
         return context
