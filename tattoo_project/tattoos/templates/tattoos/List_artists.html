@@ -15,15 +15,29 @@
         button {
             font-family: 'Black Ops One', cursive;
         }
+        /* Asegura que el footer esté siempre al final */
+        .content {
+            min-height: calc(100vh - 200px); /* Ajusta el espacio para el footer */
+        }
+        .footer {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #1f2937, #111827);
+            padding: 20px;
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-fixed bg-cover bg-center text-white" style="background-image: url('{{ background_image.image.url }}');">
     <div class="container mx-auto px-4">
         <!-- Encabezado con logo y título -->
         <div class="d-flex align-items-center py-4">
-            <img src="{% static 'home/images/logo/alien_1.png' %}" alt="Logo" 
-                 class="img-fluid me-3 rounded-circle border border-white" 
-                 style="height: 70px; width: 70px; object-fit: cover;">
+            <img onclick="window.location.href='{% url 'Home' %}'"
+                src="{{ Logo.image.url }}" alt="Logo" 
+                class="img-fluid me-3 rounded-circle border border-white" 
+                style="height: 70px; width: 70px; object-fit: cover;">
             <h1 class="display-5 fw-bold">Nuestros Artistas </h1>
         </div>
         
@@ -46,7 +60,7 @@
 
          <div class="flex flex-wrap gap-8 justify-center">
             {% for artist in artists %}
-            <a href="{% url 'artist_gallery' artist.id %}" class="group relative block overflow-hidden flex flex-col items-center text-center">
+            <a href="{% url 'Artist_Gallery' artist.id %}" class="group relative block overflow-hidden flex flex-col items-center text-center">
                 <img
                     src="{{ artist.photo.url }}"
                     alt="{{ artist.name }}"

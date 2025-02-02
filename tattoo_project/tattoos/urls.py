@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import GalleryView, ListArtist
+from .views import Artist_GalleryView, ListArtist, Gallery
 # "name" es utilzado para redireccionar los botones 
 urlpatterns = [
-    path('artist_gallery/<int:pk>/', GalleryView.as_view(), name='artist_gallery'),
     path('ListArtist/', ListArtist.as_view(), name='ListArtist'),
+    path('Artist_Gallery/<int:pk>/', Artist_GalleryView.as_view(), name='Artist_Gallery'),
+    path('gallery/', Gallery.as_view(), name='Gallery'),
 ]
