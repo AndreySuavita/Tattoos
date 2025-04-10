@@ -89,3 +89,6 @@ celerybeat-schedule
 
 # notes
 notes.txt
+
+
+__pycache__/
